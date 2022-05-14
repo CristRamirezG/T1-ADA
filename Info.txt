@@ -1,0 +1,2 @@
+gcc main.c -o Ctest
+./Ctest.exe
