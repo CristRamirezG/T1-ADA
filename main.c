@@ -10,14 +10,14 @@
 void CrearArchivo(int n) {                                          //https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=936:escribir-guardar-datos-en-ficheros-o-archivos-en-lenguaje-c-fputc-putc-fputs-fprintf-ejemplos-cu00537f&catid=82&Itemid=210
 
     int number = 0;
-    char lol[] = "12345678901234567890123456789012345678901234567890";
+    char num[] = "12345678901234567890123456789012345678901234567890";
     FILE* fichero;
     fichero = fopen("NumbersFile.txt", "wt");
    
     while(n > 0){
         number = rand() % 20;
         n--;
-        fputc(lol[number], fichero);
+        fputc(num[number], fichero);
         fputs(" ", fichero);
         
     }
@@ -162,34 +162,57 @@ int partition(int arr[], int l, int h)
    h  --> Ending index */
 int * quickSortIterative(int arr[], int l, int h)
 {
+    
     int op = h - l + 1;
-    int stack[op];
- 
+    int *stack;
+    stack = (int*) malloc(op * sizeof(int));
+    
     int top = -1;
  
     stack[++top] = l;
     stack[++top] = h;
- 
+    
     while (top >= 0) {
         
         h = stack[top--];
         l = stack[top--];
- 
+        
         int p = partition(arr, l, h);
- 
         if (p - 1 > l) {
             stack[++top] = l;
             stack[++top] = p - 1;
         }
- 
         if (p + 1 < h) {
+            
             stack[++top] = p + 1;
             stack[++top] = h;
         }
     }
+     free(stack);
     return arr;
 }
 //-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+void Automatizar(){
+
+    int TestValues[] = {1,5,10,20,30}, n = 4;
+    FILE* fichero;
+    fichero = fopen("DataTable.txt", "wt");
+        while(n > 0){
+            
+            
+
+            fputs("los valores a analizar son", fichero);
+            
+            fputc((char)TestValues[n], fichero);
+            n--;
+        }
+    
+    fclose(fichero);
+    printf(" Proceso completado ");
+}
+
+//-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
 
 int main()
 {
@@ -304,7 +327,6 @@ tag1:
             scanf("%d",&num);
             clock_t t;
             t = clock();
-
             arr = quickSortIterative(arr,0,num-1);
 
             printf ("Primer numero: %d \n", arr[0]);
@@ -334,7 +356,7 @@ tag1:
         break;
         case 7:
         {
-
+            Automatizar();
         }
         break;
         default:
@@ -346,6 +368,5 @@ tag1:
     }
     return 0;
 }
-
 
 
