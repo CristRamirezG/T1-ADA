@@ -191,26 +191,6 @@ int * quickSortIterative(int arr[], int l, int h)
      free(stack);
     return arr;
 }
-//-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
-
-void Automatizar(){
-
-    int TestValues[] = {1,5,10,20,30}, n = 4;
-    FILE* fichero;
-    fichero = fopen("DataTable.txt", "wt");
-        while(n > 0){
-            
-            
-
-            fputs("los valores a analizar son", fichero);
-            
-            fputc((char)TestValues[n], fichero);
-            n--;
-        }
-    
-    fclose(fichero);
-    printf(" Proceso completado ");
-}
 
 //-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
 
@@ -356,7 +336,7 @@ tag1:
         break;
         case 7:
         {
-            Automatizar();
+            
         }
         break;
         default:
